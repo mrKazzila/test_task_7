@@ -1,0 +1,18 @@
+# ===== base ignore =====
+__pypackages__/
+
+# ===== cache data ignore =====
+__pycache__/
+.cache
+
+# ===== local environment ignore =====
+.venv/
+
+# ===== test data ignore =====
+.pytest_cache/
+cover/
+/htmlcov/
+.coverage
+.coverage.*
+
+# ===== project ignore =====
