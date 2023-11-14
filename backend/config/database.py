@@ -2,6 +2,7 @@ import json
 import logging
 from pathlib import Path
 from sys import exit
+from typing import Any
 
 from motor.motor_asyncio import (
     AsyncIOMotorClient,
@@ -27,16 +28,18 @@ def add_test_templates(
 ) -> None:
     """Add test data from json file to MongoDB collection."""
     try:
-        logger.info(
-            'Start add test data from file %(file)s',
-            {'file': json_file},
-        )
+        logger.info('Start add test data from file %s', json_file)
 
-        with open(json_file, 'r') as json_file:
-            test_templates = json.load(json_file)
-        [collection_cursor_.insert_one(template) for template in test_templates]
+        json_data = _get_json_data_from_file(file=json_file)
+        [collection_cursor_.insert_one(template) for template in json_data]
 
         logger.info('Test data successfully added')
-    except Exception as err:
+    except (FileNotFoundError, Exception) as err:
         logger.error(err)
         exit(err)
+
+
+def _get_json_data_from_file(file: Path) -> dict[str, Any]:
+    """Get data from json file."""
+    with open(file, 'r') as json_file:
+        return json.load(json_file)
