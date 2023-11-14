@@ -16,3 +16,4 @@ cover/
 .coverage.*
 
 # ===== project ignore =====
+persistentdata/
