@@ -48,7 +48,6 @@ def settings() -> Settings:
 
     try:
         settings_ = Settings()
-        logger.error(settings_.mongo_db.dsn)
         return settings_
 
     except ValidationError as e:
