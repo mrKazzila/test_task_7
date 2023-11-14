@@ -5,7 +5,7 @@ from pathlib import Path
 from fastapi import FastAPI
 
 from api.routers_setup import routers_setup
-from config.database import collection_name, add_test_templates
+from config.database import add_test_templates, collection_cursor
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ async def lifespan(app_: FastAPI):
 
     add_test_templates(
         json_file=Path(Path(__file__).parent / 'test_forms.json').resolve(),
-        collection_name_=collection_name,
+        collection_cursor_=collection_cursor,
     )
 
     yield

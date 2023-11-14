@@ -16,15 +16,16 @@ logger = logging.getLogger(__name__)
 client: AsyncIOMotorClient = AsyncIOMotorClient(settings().mongo_db.dsn)
 db: AsyncIOMotorDatabase = client.get_database(settings().mongo_db.DB_NAME)
 
-collection_name: AsyncIOMotorCursor = db.get_collection(
+collection_cursor: AsyncIOMotorCursor = db.get_collection(
     settings().mongo_db.COLLECTION_NAME,
 )
 
 
 def add_test_templates(
         json_file: Path,
-        collection_name_: AsyncIOMotorCursor,
+        collection_cursor_: AsyncIOMotorCursor,
 ) -> None:
+    """Add test data from json file to MongoDB collection."""
     try:
         logger.info(
             'Start add test data from file %(file)s',
@@ -33,7 +34,7 @@ def add_test_templates(
 
         with open(json_file, 'r') as json_file:
             test_templates = json.load(json_file)
-        [collection_name_.insert_one(template) for template in test_templates]
+        [collection_cursor_.insert_one(template) for template in test_templates]
 
         logger.info('Test data successfully added')
     except Exception as err:
