@@ -15,7 +15,7 @@ async def lifespan(app_: FastAPI):
     logger.info('Service started')
 
     add_test_templates(
-        json_file=Path(Path(__file__).parent / 'test_forms.json').resolve(),
+        json_file=Path(Path(__file__).parent / 'list_templates_form.json').resolve(),
         collection_cursor_=collection_cursor,
     )
 
