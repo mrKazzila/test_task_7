@@ -13,9 +13,18 @@
 <details>
 <summary><strong>API Documentation</strong></summary>
 
-**`POST` | Create short url: [`http://localhost:8000/get_form?f_name1=value1&f_name2=value2`](http://localhost:8000/get_form?f_name1=value1&f_name2=value2)**
+**`POST` | Create short url: [`http://localhost:8000/get_form`](http://localhost:8000/get_form)**
 
 Example:
+   - Request
+      ```
+      [
+        {
+          "field": "string",
+          "value": "+7 123 456 90 12"
+        }
+      ]
+      ```
    - Response (if form template found)
 
       ```
@@ -27,8 +36,8 @@ Example:
 
       ```
         {
-          "f_name1": "text",
-          "f_name2": "text"
+         "field": "text",
+         "value": "phone"
         }
       ```
 
