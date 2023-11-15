@@ -48,7 +48,12 @@ To clone and run this project, you'll need:
    git clone git@github.com:mrKazzila/test_task_7.git
    ```
 
-2. Run docker compose with make
+2. Move to `backend` folder
+   ```bash
+   cd backend
+   ```
+
+3. Run docker compose with make
    ```bash
    make docker_up
    ```
@@ -57,9 +62,9 @@ To clone and run this project, you'll need:
    docker-compose --env-file env/.env -p kazakov-test_task -f docker-compose.yaml up -d --build
    ```
 
-3. Open [OpenAPi](http://localhost:8000/docs) for testing or use [Postman collection]()
+4. Open [http://localhost:8000/docs](http://localhost:8000/docs) for testing or use [Postman collection](postman) is Postman
 
-4. Stop docker compose with make
+5. Stop docker compose with make
    ```bash
    make docker_down
    ```
@@ -70,6 +75,28 @@ To clone and run this project, you'll need:
 
 </details>
 
+
+<details>
+<summary>Run tests[Pytest]</summary>
+
+1. Firstly setup [Poetry](https://python-poetry.org/docs/cli/)
+   ```bash
+    poetry config virtualenvs.in-project true
+    poetry shell
+    poetry install
+   ```
+
+2. Move to `backend` folder
+   ```bash
+   cd backend
+   ```
+
+3. Run tests
+   ```bash
+   pytest
+   ```
+
+</details>
 
 
 ## Additional material
