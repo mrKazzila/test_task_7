@@ -31,7 +31,7 @@ async def find_form_by_data(data: list[dict[str, str]]) -> JSONResponse:
         field_types = set_types_for_field(data=dict_data)
         return JSONResponse(
             content=field_types,
-            status_code=status.HTTP_201_CREATED,
+            status_code=status.HTTP_202_ACCEPTED,
         )
 
     except HTTPException as err:
