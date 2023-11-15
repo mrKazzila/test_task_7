@@ -26,11 +26,11 @@ async def find_matching_template(data: dict) -> str | None:
     templates_list: list = await cursor.to_list(length=100)
 
     for template_ in templates_list:
-        template_fields_without = set(template_.keys()) - {'_id', 'name'}
+        template_fields_without_name = set(template_.keys()) - {'_id', 'name'}
 
         if form_name := _check_form(
                 template=template_,
-                template_fields=template_fields_without,
+                template_fields=template_fields_without_name,
                 data=data,
         ):
             logger.debug('form_name=%s', form_name)
