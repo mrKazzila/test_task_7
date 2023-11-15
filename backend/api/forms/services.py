@@ -108,10 +108,14 @@ def _fields_type_match(
             data_field_value=data[field],
         )
 
+        logger.debug('field=%s', field)
+        logger.debug('template_field_type=%s', template_field_type)
+        logger.debug('data_field_type=%s', data_field_type)
+
         if data_field_type != template_field_type:
             return False
 
-    logger.debug('All fields types is match!')
+    logger.info('All fields types is match!')
     return True
 
 
