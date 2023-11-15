@@ -27,7 +27,7 @@ async def find_form_by_data(data: list[dict[str, str]]) -> JSONResponse:
                 status_code=status.HTTP_200_OK,
             )
 
-        logger.debug('Form not found, add types for fields')
+        logger.info('Form not found, add types for fields')
         field_types = set_types_for_field(data=dict_data)
         return JSONResponse(
             content=field_types,
