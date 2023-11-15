@@ -22,7 +22,7 @@ loggers:
   root:
     handlers:
       - console
-    level: DEBUG
+    level: ERROR
     propagate: false
 
   uvicorn.access:
