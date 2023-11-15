@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  fastapi:
+    container_name: ${APP_NAME}-api
+    image: ${APP_NAME}-fast-api
+    build:
+      dockerfile: Dockerfile
+    env_file:
+      - env/.env
+    command: sh -c "
+      ./scripts/run_app.sh
+      "
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fsSL http://localhost:8000/api/healthcheck/" ]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+      start_period: 10s
+    restart: always
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - custom
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/home/unprivilegeduser/test_task
+
+  mongodb:
+    container_name: ${APP_NAME}-mongodb
+    image: mongo:${MONGODB_VERSION}
+    env_file:
+      - env/.env
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 30s
+      retries: 3
+      start_period: 20s
+    restart: always
+    networks:
+      - custom
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./persistentdata/mongodb/:/data/db
+
+networks:
+  custom:
+    driver: bridge

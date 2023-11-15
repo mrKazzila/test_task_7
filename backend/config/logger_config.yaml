@@ -1,0 +1,43 @@
+version: 1
+disable_existing_loggers: false
+
+
+formatters:
+  json:
+    "()": "pythonjsonlogger.jsonlogger.JsonFormatter"
+    format: "%(asctime)s %(levelname)s %(name)s: %(message)s"
+
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: json
+
+  watchfiles:
+    class: logging.NullHandler
+
+
+loggers:
+  root:
+    handlers:
+      - console
+    level: ERROR
+    propagate: false
+
+  uvicorn.access:
+    handlers:
+      - console
+    level: INFO
+    propagate: false
+
+  uvicorn.error:
+    handlers:
+      - console
+    level: INFO
+    propagate: false
+
+  watchfiles.main:
+    handlers:
+      - watchfiles
+    propagate: false

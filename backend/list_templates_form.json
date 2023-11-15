@@ -1,0 +1,36 @@
+[
+  {
+    "name" : "Form template name" ,
+    "first_name" : "text" ,
+    "last_name" : "text" ,
+    "lead_email" : "email"
+  } ,
+  {
+    "name" : "MyForm" ,
+    "user_name" : "text" ,
+    "order_date" : "date" ,
+    "lead_email" : "email"
+  } ,
+  {
+    "name" : "OrderForm" ,
+    "product_name" : "text" ,
+    "order_date" : "date" ,
+    "customer_phone" : "phone"
+  } ,
+  {
+    "name" : "Company Info Form" ,
+    "company_name" : "text" ,
+    "tagline" : "text" ,
+    "company_phone" : "phone" ,
+    "found_data" : "date" ,
+    "ipo_data" : "date"
+  } ,
+  {
+    "name" : "MovieInfoForm" ,
+    "title" : "text" ,
+    "description" : "text" ,
+    "genres" : "text" ,
+    "category" : "text" ,
+    "year" : "date"
+  }
+]

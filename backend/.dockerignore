@@ -1,0 +1,16 @@
+# ===== Project =====
+README.md
+persistentdata/
+
+# ===== Docker =====
+.dockerignore
+Dockerfile
+
+# ===== Env & venv =====
+.venv/
+
+# ===== Git =====
+.gitignore
+
+# ===== Cache =====
+**/__pycache__/
