@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "ad65dbcb-2269-4c35-ae61-9112c6b90d0f",
+		"name": "TestTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29037132"
+	},
+	"item": [
+		{
+			"name": "positive_case",
+			"item": [
+				{
+					"name": "SImpleForm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Den\",\n    \"lead_email\": \"example@example.com\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get_form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get_form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExtraFields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Den\",\n    \"lead_email\": \"example@example.com\",\n    \"order_date\" : \"01.01.2023\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get_form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get_form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckRandomFieldTypes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"correct_email\": \"example@example.com\",\n    \"incorrect_email\": \"@example.com\",\n    \"correct_data_1\": \"01.01.2023\",\n    \"incorrect_data_1\": \"2023.01.01\",\n    \"correct_data_2\": \"2023-01-01\",\n    \"incorrect_data_2\": \"01-01-2023\",\n    \"correct_phone\": \"+7 123 456 90 12\",\n    \"incorrect_phone\": \"+7 12 3456 90 12\",\n    \"some_text\": \"Some text info\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get_form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get_form"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "negative_case",
+			"item": [
+				{
+					"name": "WrongFieldName",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"first_name\": \"Bob\",\n    \"lastname\": \"Den\",\n    \"lead_email\": \"example@example.com\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get_form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get_form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MissingField",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Den\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get_form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get_form"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
