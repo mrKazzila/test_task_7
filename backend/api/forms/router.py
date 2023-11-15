@@ -17,19 +17,18 @@ router = APIRouter(
     name='Find form',
     description='Find form by data',
 )
-async def find_form_by_data(data: dict[str, str]) -> JSONResponse:
-    sub_data = data
+async def find_form_by_data(data: list[dict[str, str]]) -> JSONResponse:
+    dict_data = data[0]
 
     try:
-
-        if template_name := await find_matching_template(data=sub_data):
+        if template_name := await find_matching_template(data=dict_data):
             return JSONResponse(
                 content={'template_name': template_name},
                 status_code=status.HTTP_200_OK,
             )
 
         logger.debug('Form not found, add types for fields')
-        field_types = set_types_for_field(data=sub_data)
+        field_types = set_types_for_field(data=dict_data)
         return JSONResponse(
             content=field_types,
             status_code=status.HTTP_201_CREATED,
