@@ -14,7 +14,7 @@ from tests.unit.forms.parametrize_data import (
 
 @pytest.mark.unit
 @pytest.mark.parametrize(
-    "data, expected_result",
+    'data, expected_result',
     set_types_for_field_example,
     ids=str
 )
@@ -36,7 +36,7 @@ def test_fields_type_match(form_template, template_fields, form_data):
 
 @pytest.mark.unit
 @pytest.mark.parametrize(
-    "data_field_value, expected_result",
+    'data_field_value, expected_result',
     get_data_field_type_example,
     ids=str,
 )
